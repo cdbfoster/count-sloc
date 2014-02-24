@@ -35,6 +35,7 @@ function line-count {
 	echo $(cat $1 | sed -e "/^\/\*/,/\*\/$/d" -e "/^\s*$\|^\s*\/\//d" | wc -l)
 }
 
+# Print the first two arguments in nice columns.
 function print-line {
 	echo $1 $2 | awk '{printf " %-50s | %4s\n", $1, $2}'
 }
@@ -63,7 +64,7 @@ do
 	# Get the number of SLOC for the file
 	lines=$(line-count "$item")
 	
-	echo "$print_item" $lines | awk '{printf " %-50s | %4s\n", $1, $2}'
+	print-line "$print_item" $lines
 	
 	((total_lines=total_lines+lines))
 done
