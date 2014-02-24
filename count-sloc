@@ -60,12 +60,12 @@ do
 	else
 		print_item="$item"
 	fi
-	
+
 	# Get the number of SLOC for the file
 	lines=$(line-count "$item")
-	
+
 	print-line "$print_item" $lines
-	
+
 	((total_lines=total_lines+lines))
 done
 
